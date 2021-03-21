@@ -1,49 +1,22 @@
-import React, { useCallback, useState } from 'react'
+import React, { useState } from 'react'
 import PrimaryButton from './PrimaryButton';
 import TextInput from './TextInput'
 import moment from 'moment'
 import cc from "classcat"
 
 type Props = {
-    getTodos:() => void,
     show: boolean,
     setShow: (show:boolean) => void,
+    inputTodo:(e:React.ChangeEvent<HTMLInputElement>) => void,
+    inputLimit:(e:React.ChangeEvent<HTMLInputElement>) => void,
+    onClick:() => void,
+    todo:string,
+    limit:string,
+    type: 'add' | 'update',
 }
 
 const Form = (props:Props) => {
-    const [todo, setTodo] = useState("");
-    const [limit, setLimit] = useState(moment().format("YYYY-MM-DD"));
-
-    const inputTodo = useCallback((e:React.ChangeEvent<HTMLInputElement>) => {
-        setTodo(e.target.value);
-    },[])
-
-    const inputLimit = useCallback((e:React.ChangeEvent<HTMLInputElement>) => {
-        setLimit(e.target.value);
-    },[])
-
-    async function addTodo() {
-        const body = JSON.stringify({todo:todo,limit:limit})
-        await fetch('http://localhost:3000/item',{
-            method: 'POST',
-            mode: 'cors',
-            body: body,
-            headers:{'Content-Type': 'application/json'}
-        })
-        .then(() =>{
-            props.getTodos();
-        })
-        .catch((error) => {
-            console.log(error);
-        })
-        .finally(() => {
-            setTodo("");
-            props.setShow(false)
-            setLimit(moment().format("YYYY-MM-DD"));
-        });
-
-    }
-
+    const label = props.type === 'add'? '追加' : '更新';
     return (
         <div >
             <div className={cc({"form-back": props.show === true,})} onClick={() => props.setShow(false)}></div>
@@ -54,9 +27,9 @@ const Form = (props:Props) => {
                 }
             ])}>
                 <div className="input-rap">
-                    <TextInput value={todo}label="タスクを追加" type="text" fullWidth={true} onChange={inputTodo}/>
-                    <TextInput value={limit} label="日時を追加" type="date" fullWidth={false} onChange={inputLimit}/>
-                    <span className="primary-button"><PrimaryButton label="追加" onClick={addTodo} /></span>
+                    <TextInput value={props.todo} label={`タスクを${label}`} type="text" fullWidth={true} onChange={props.inputTodo}/>
+                    <TextInput value={moment(props.limit).format("YYYY-MM-DD")} label={`日時を${label}`}  type="date" fullWidth={false} onChange={props.inputLimit}/>
+                    <span className="primary-button"><PrimaryButton label={label} onClick={props.onClick} /></span>
                 </div>
             </div>
         </div>
