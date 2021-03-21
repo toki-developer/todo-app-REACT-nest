@@ -1,11 +1,11 @@
 import React from 'react'
 import { makeStyles, TextField } from '@material-ui/core'
 
-type Form = {
+type Props = {
     value:string,
     label: string,
     type:string,
-    onChange:any,
+    onChange: (e:React.ChangeEvent<HTMLInputElement>) => void,
     fullWidth:boolean,
 }
 
@@ -21,7 +21,7 @@ const useStyles = makeStyles({
     }
 })
 
-const TextInput= (props:Form) => {
+const TextInput= (props:Props) => {
     const classes = useStyles();
     const inputStyle = props.fullWidth ? classes.full : classes.min;
     return (
