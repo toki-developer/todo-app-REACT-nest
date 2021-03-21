@@ -1,0 +1,15 @@
+.container {
+  width: 100%;
+}
+.content {
+  width: clamp(375px, 60vw, 700px);
+  margin: auto;
+}
+
+.todo-content {
+  display: inline-block;
+}
+
+.limit {
+  padding-left: 30px;
+}
