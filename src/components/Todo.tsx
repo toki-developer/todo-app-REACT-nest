@@ -7,9 +7,15 @@ import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
 import ListItemText from '@material-ui/core/ListItemText';
 import Checkbox from '@material-ui/core/Checkbox';
 import IconButton from '@material-ui/core/IconButton';
+import moment from 'moment'
 
 
 const Todo = (props:Todo) => {
+    const calcLimit = ():string => {
+        const limit = moment().diff(props.limit , 'days') * -1;
+        if(limit < 0) return limit* -1 + '日前'
+        return 'あと'+limit+'日';
+    }
     return (
         <ListItem key={props.id} role={undefined} dense button>
             <ListItemIcon>
@@ -18,7 +24,7 @@ const Todo = (props:Todo) => {
             <ListItemText primary={props.todo} />
             <ListItemSecondaryAction>
               <IconButton edge="end">
-                <span>あと5日</span>
+                  <span>{calcLimit()}</span>
               </IconButton>
             </ListItemSecondaryAction>
           </ListItem>
