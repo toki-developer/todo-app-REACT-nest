@@ -22,7 +22,7 @@ const App = () => {
     <div className="container">
       <div className="content">
         <TodoList todos={todos}/>
-        <Form />
+        <Form getTodos={getTodos}/>
       </div>
     </div>
   );
