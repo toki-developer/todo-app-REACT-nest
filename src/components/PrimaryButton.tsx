@@ -4,7 +4,7 @@ import { makeStyles } from '@material-ui/core';
 
 type Props = {
     label:string,
-    onClick:any,
+    onClick:() => void,
 }
 
 const useStyles = makeStyles({
