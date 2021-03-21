@@ -13,3 +13,15 @@
 .limit {
   padding-left: 30px;
 }
+
+.form-container {
+  margin: auto;
+  width: 80%;
+  position: relative;
+}
+
+.primary-button {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
