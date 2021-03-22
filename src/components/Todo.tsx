@@ -27,7 +27,7 @@ const Todo = (props:Props) => {
     return (
         <ListItem key={props.id} role={undefined} dense button>
             <ListItemIcon>
-              <Checkbox onClick={() => {
+              <Checkbox checked={props.isDone} onClick={() => {
                 props.doneTodo(props.id,props.todo,props.limit,!props.isDone)
               }}/>
             </ListItemIcon>

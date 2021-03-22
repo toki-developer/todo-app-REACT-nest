@@ -4,6 +4,7 @@ import './assets/styles/style.css'
 import Form from './components/Form';
 import AddButton from './components/AddButton';
 import moment from 'moment'
+import DoneTodoList from './components/DoneTodoList';
 
 const initialTodo: Todo[] = [];
 type type = 'add' | 'update'
@@ -15,13 +16,11 @@ const App = () => {
   const [id, setId] = useState("");
   const [todo, setTodo] = useState("");
   const [limit, setLimit] = useState(moment().format("YYYY-MM-DD"));
-  const [isDone, setIsDone] = useState(false);
 
   const setStatus = (id:string,todo:string,limit:string,isDone:boolean) => {
     setId(id);
     setTodo(todo);
     setLimit(limit);
-    setIsDone(isDone);
   }
 
   const inputTodo = useCallback((e:React.ChangeEvent<HTMLInputElement>) => {
@@ -112,11 +111,16 @@ const App = () => {
       setType('update')
     }
   }
+
+  const todoList = todos.filter((todo) => todo.isDone === false);
+  const doneTodoList = todos.filter((todo) => todo.isDone === true);
+
   return (
     <div className="container">
       <div className="content">
         <h1>マイタスク</h1>
-        <TodoList todos={todos} showForm={showForm} setStatus={setStatus} doneTodo={updateTodo}/>
+        <TodoList todos={todoList} showForm={showForm} setStatus={setStatus} doneTodo={updateTodo}/>
+        <DoneTodoList todos={doneTodoList} showForm={showForm} setStatus={setStatus} doneTodo={updateTodo}/>
         <AddButton showForm={showForm}/>
         <Form
         todo={todo} limit={limit} type={type}
