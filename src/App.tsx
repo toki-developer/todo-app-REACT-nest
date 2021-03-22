@@ -4,6 +4,7 @@ import './assets/styles/style.css'
 import Form from './components/Form';
 import AddButton from './components/AddButton';
 import moment from 'moment'
+import DoneTodoList from './components/DoneTodoList';
 
 const initialTodo: Todo[] = [];
 type type = 'add' | 'update'
@@ -112,11 +113,16 @@ const App = () => {
       setType('update')
     }
   }
+
+  const todoList = todos.filter((todo) => todo.isDone === false);
+  const doneTodoList = todos.filter((todo) => todo.isDone === true);
+
   return (
     <div className="container">
       <div className="content">
         <h1>マイタスク</h1>
-        <TodoList todos={todos} showForm={showForm} setStatus={setStatus} doneTodo={updateTodo}/>
+        <TodoList todos={todoList} showForm={showForm} setStatus={setStatus} doneTodo={updateTodo}/>
+        <DoneTodoList todos={doneTodoList} showForm={showForm} setStatus={setStatus} doneTodo={updateTodo}/>
         <AddButton showForm={showForm}/>
         <Form
         todo={todo} limit={limit} type={type}

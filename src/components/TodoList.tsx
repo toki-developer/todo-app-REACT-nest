@@ -20,8 +20,6 @@ type Props = {
 
 const TodoList = (props:Props) => {
     const classes = useStyles();
-    console.log(props);
-
   return (
     <List className={classes.root}>
       {props.todos.map((todo:Todo) => {
