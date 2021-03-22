@@ -16,13 +16,11 @@ const App = () => {
   const [id, setId] = useState("");
   const [todo, setTodo] = useState("");
   const [limit, setLimit] = useState(moment().format("YYYY-MM-DD"));
-  const [isDone, setIsDone] = useState(false);
 
   const setStatus = (id:string,todo:string,limit:string,isDone:boolean) => {
     setId(id);
     setTodo(todo);
     setLimit(limit);
-    setIsDone(isDone);
   }
 
   const inputTodo = useCallback((e:React.ChangeEvent<HTMLInputElement>) => {

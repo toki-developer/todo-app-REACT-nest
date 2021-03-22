@@ -17,12 +17,12 @@ const DoneTodoList = (props:Props) => {
                 <span>完了{props.todos.length}件</span>
                 <span className= {cc([
                 'show-done-list',
-                {'show-done-list-r':showDone}
+                {'show-done-list-r':!showDone}
                 ])} onClick={()=> setShowDone(!showDone)}/>
             </div>
             <div className={cc([
                 "done-list",
-                {"done-list-hide": showDone}
+                {"done-list-hide": !showDone}
                 ])}>
                 <TodoList todos={props.todos} showForm={props.showForm} setStatus={props.setStatus} doneTodo={props.doneTodo}/>
             </div>
