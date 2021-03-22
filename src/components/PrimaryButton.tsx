@@ -3,8 +3,11 @@ import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core';
 
 type Props = {
+    id:string,
+    todo:string,
+    limit:string,
     label:string,
-    onClick:() => void,
+    onClick:(id:string, todo:string, limit:string, isDonet?:boolean) => void
 }
 
 const useStyles = makeStyles({
@@ -16,7 +19,7 @@ const useStyles = makeStyles({
 const PrimaryButton = (props:Props) => {
     const classes = useStyles()
     return (
-        <Button className={classes.button} variant="contained" color="primary" onClick={props.onClick}>{props.label}</Button>
+        <Button className={classes.button} variant="contained" color="primary" onClick={() => props.onClick(props.id,props.todo,props.limit)}>{props.label}</Button>
     )
 }
 

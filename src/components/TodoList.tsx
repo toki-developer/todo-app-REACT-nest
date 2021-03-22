@@ -15,7 +15,7 @@ type Props = {
   todos:Todo[],
   showForm:(type:'update') => void,
   setStatus:(id:string,todo:string,limit:string,isDone:boolean)=> void
-  doneTodo:()=>void
+  doneTodo:(id:string, todo:string, limit:string, isDone?:boolean)=>void
 }
 
 const TodoList = (props:Props) => {

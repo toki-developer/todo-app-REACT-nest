@@ -14,7 +14,7 @@ type Props = {
   isDone: boolean,
   showForm:(type:'update') => void,
   setStatus:(id:string,todo:string,limit:string,isDone:boolean)=> void
-  doneTodo:()=>void
+  doneTodo:(id:string, todo:string, limit:string, isDone?:boolean)=>void
 }
 
 const Todo = (props:Props) => {
@@ -28,10 +28,7 @@ const Todo = (props:Props) => {
         <ListItem key={props.id} role={undefined} dense button>
             <ListItemIcon>
               <Checkbox onClick={() => {
-                props.setStatus(props.id,props.todo,props.limit,!props.isDone)
-                console.log("onCLikc==setのあと")
-                console.log(props.id+ " " + props.todo+ " " + props.limit+ " " + props.isDone)
-                props.doneTodo()
+                props.doneTodo(props.id,props.todo,props.limit,!props.isDone)
               }}/>
             </ListItemIcon>
             <ListItemText primary={props.todo} onClick={()=>{

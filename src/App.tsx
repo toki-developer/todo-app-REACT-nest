@@ -22,7 +22,6 @@ const App = () => {
     setTodo(todo);
     setLimit(limit);
     setIsDone(isDone);
-    console.log(id+ " " + todo+ " " + limit+ " " + isDone)
   }
 
   const inputTodo = useCallback((e:React.ChangeEvent<HTMLInputElement>) => {
@@ -44,7 +43,7 @@ const App = () => {
     getTodos();
   }, [setTodos])
 
-  async function addTodo() {
+  async function addTodo(id:string, todo:string, limit:string, isDonet?:boolean) {
     const body = JSON.stringify({todo:todo,limit:limit})
     await fetch('http://localhost:3000/item',{
         method: 'POST',
@@ -65,8 +64,7 @@ const App = () => {
     });
   }
 
-  async function updateTodo(){
-    console.log(id+ " " + todo+ " " + limit+ " " + isDone)
+  async function updateTodo(id:string, todo:string, limit:string, isDone?:boolean){
     const url = `http://localhost:3000/item/${id}/update`;
     const body = JSON.stringify({todo:todo,limit:limit,isDone:isDone})
     await fetch(url,{
@@ -74,6 +72,23 @@ const App = () => {
       mode: 'cors',
       body: body,
       headers:{'Content-Type': 'application/json'}
+    })
+    .then(() =>{
+      getTodos();
+    })
+    .catch((error) => {
+      console.log(error);
+    })
+    .finally(() => {
+      setShow(false)
+    });
+  }
+
+  async function deleteTodo(id:string, todo:string, limit:string, isDone?:boolean){
+    const url = ` http://localhost:3000/item/${id}/delete`;
+    await fetch(url,{
+      method: 'DELETE',
+      mode: 'cors'
     })
     .then(() =>{
       getTodos();
@@ -105,8 +120,9 @@ const App = () => {
         <AddButton showForm={showForm}/>
         <Form
         todo={todo} limit={limit} type={type}
-        setShow={setShow} show={show}
+        setShow={setShow} show={show} id={id}
         inputTodo={inputTodo} inputLimit={inputLimit} onClick={type === 'add'? addTodo : updateTodo}
+        deleteTodo={deleteTodo}
         />
       </div>
     </div>

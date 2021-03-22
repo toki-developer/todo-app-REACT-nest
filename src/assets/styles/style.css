@@ -57,6 +57,12 @@
   bottom: 0;
 }
 
+.delete-button {
+  position: absolute;
+  right: 80px;
+  bottom: 0;
+}
+
 .form {
   z-index: 2;
   background-color: aqua;
