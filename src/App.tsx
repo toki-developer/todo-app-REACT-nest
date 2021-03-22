@@ -12,9 +12,18 @@ const App = () => {
   const [todos, setTodos] = useState(initialTodo);
   const [show, setShow] = useState(false);
   const [type, setType] = useState<type>('add');
-  const [todo, setTodo] = useState("");
   const [id, setId] = useState("");
+  const [todo, setTodo] = useState("");
   const [limit, setLimit] = useState(moment().format("YYYY-MM-DD"));
+  const [isDone, setIsDone] = useState(false);
+
+  const setStatus = (id:string,todo:string,limit:string,isDone:boolean) => {
+    setId(id);
+    setTodo(todo);
+    setLimit(limit);
+    setIsDone(isDone);
+    console.log(id+ " " + todo+ " " + limit+ " " + isDone)
+  }
 
   const inputTodo = useCallback((e:React.ChangeEvent<HTMLInputElement>) => {
     setTodo(e.target.value);
@@ -57,8 +66,9 @@ const App = () => {
   }
 
   async function updateTodo(){
+    console.log(id+ " " + todo+ " " + limit+ " " + isDone)
     const url = `http://localhost:3000/item/${id}/update`;
-    const body = JSON.stringify({todo:todo,limit:limit})
+    const body = JSON.stringify({todo:todo,limit:limit,isDone:isDone})
     await fetch(url,{
       method: 'PUT',
       mode: 'cors',
@@ -91,7 +101,7 @@ const App = () => {
     <div className="container">
       <div className="content">
         <h1>マイタスク</h1>
-        <TodoList todos={todos} showForm={showForm} setId={setId} setTodo={setTodo} setLimit={setLimit}/>
+        <TodoList todos={todos} showForm={showForm} setStatus={setStatus} doneTodo={updateTodo}/>
         <AddButton showForm={showForm}/>
         <Form
         todo={todo} limit={limit} type={type}

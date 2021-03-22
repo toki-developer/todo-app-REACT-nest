@@ -14,9 +14,8 @@ const useStyles = makeStyles(() =>
 type Props = {
   todos:Todo[],
   showForm:(type:'update') => void,
-  setId:(id:string) => void,
-  setTodo:(todo:string) => void,
-  setLimit:(limit:string) => void,
+  setStatus:(id:string,todo:string,limit:string,isDone:boolean)=> void
+  doneTodo:()=>void
 }
 
 const TodoList = (props:Props) => {
@@ -28,8 +27,8 @@ const TodoList = (props:Props) => {
       {props.todos.map((todo:Todo) => {
         return (
           <Todo
-          key={todo.id} id={todo.id} todo={todo.todo} limit={todo.limit} showForm={props.showForm}
-          setId={props.setId} setTodo={props.setTodo} setLimit={props.setLimit}
+          key={todo.id} id={todo.id} todo={todo.todo} limit={todo.limit} isDone={todo.isDone}
+          showForm={props.showForm} setStatus={props.setStatus} doneTodo={props.doneTodo}
           />
         );
       })}

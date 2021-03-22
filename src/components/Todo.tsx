@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from 'react';
-import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
+import React from 'react';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
@@ -12,10 +11,10 @@ type Props = {
   id: string,
   todo: string,
   limit: string,
+  isDone: boolean,
   showForm:(type:'update') => void,
-  setId:(id:string) => void,
-  setTodo:(todo:string) => void,
-  setLimit:(limit:string) => void,
+  setStatus:(id:string,todo:string,limit:string,isDone:boolean)=> void
+  doneTodo:()=>void
 }
 
 const Todo = (props:Props) => {
@@ -28,12 +27,15 @@ const Todo = (props:Props) => {
     return (
         <ListItem key={props.id} role={undefined} dense button>
             <ListItemIcon>
-              <Checkbox/>
+              <Checkbox onClick={() => {
+                props.setStatus(props.id,props.todo,props.limit,!props.isDone)
+                console.log("onCLikc==setのあと")
+                console.log(props.id+ " " + props.todo+ " " + props.limit+ " " + props.isDone)
+                props.doneTodo()
+              }}/>
             </ListItemIcon>
             <ListItemText primary={props.todo} onClick={()=>{
-              props.setId(props.id)
-              props.setTodo(props.todo)
-              props.setLimit(props.limit)
+              props.setStatus(props.id,props.todo,props.limit,props.isDone)
               props.showForm('update')
               }}/>
             <ListItemSecondaryAction>
