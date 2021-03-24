@@ -1,0 +1,142 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App matchs snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="container"
+  >
+    <div
+      class="content"
+    >
+      <h1>
+        マイタスク
+      </h1>
+      <ul
+        class="MuiList-root makeStyles-root-1 MuiList-padding"
+      />
+      <div>
+        <div
+          class="done-list-title"
+        >
+          <span>
+            完了0件
+          </span>
+          <span
+            class="show-done-list show-done-list-r"
+          />
+        </div>
+        <div
+          class="done-list done-list-hide"
+        >
+          <ul
+            class="MuiList-root makeStyles-root-1 MuiList-padding"
+          />
+        </div>
+      </div>
+      <div
+        class="add-button"
+      >
+        <button
+          class="MuiButtonBase-root MuiButton-root MuiButton-contained makeStyles-button-2 MuiButton-containedPrimary"
+          tabindex="0"
+          type="button"
+        >
+          <span
+            class="MuiButton-label"
+          >
+            ＋
+          </span>
+          <span
+            class="MuiTouchRipple-root"
+          />
+        </button>
+      </div>
+      <div>
+        <div
+          class=""
+        />
+        <div
+          class="form-content form-hide"
+        >
+          <div
+            class="input-rap"
+          >
+            <div
+              class="MuiFormControl-root MuiTextField-root makeStyles-full-3 MuiFormControl-marginDense MuiFormControl-fullWidth"
+            >
+              <label
+                class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-marginDense Mui-required Mui-required"
+                data-shrink="false"
+              >
+                タスクを追加
+                <span
+                  aria-hidden="true"
+                  class="MuiFormLabel-asterisk MuiInputLabel-asterisk"
+                >
+                   *
+                </span>
+              </label>
+              <div
+                class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-fullWidth MuiInput-fullWidth MuiInputBase-formControl MuiInput-formControl MuiInputBase-marginDense MuiInput-marginDense"
+              >
+                <input
+                  aria-invalid="false"
+                  class="MuiInputBase-input MuiInput-input MuiInputBase-inputMarginDense MuiInput-inputMarginDense"
+                  required=""
+                  type="text"
+                  value=""
+                />
+              </div>
+            </div>
+            <div
+              class="MuiFormControl-root MuiTextField-root makeStyles-min-4 MuiFormControl-marginDense"
+            >
+              <label
+                class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-marginDense MuiFormLabel-filled Mui-required Mui-required"
+                data-shrink="true"
+              >
+                日時を追加
+                <span
+                  aria-hidden="true"
+                  class="MuiFormLabel-asterisk MuiInputLabel-asterisk"
+                >
+                   *
+                </span>
+              </label>
+              <div
+                class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl MuiInputBase-marginDense MuiInput-marginDense"
+              >
+                <input
+                  aria-invalid="false"
+                  class="MuiInputBase-input MuiInput-input MuiInputBase-inputMarginDense MuiInput-inputMarginDense"
+                  required=""
+                  type="date"
+                  value="2021-03-24"
+                />
+              </div>
+            </div>
+            <span
+              class="primary-button"
+            >
+              <button
+                class="MuiButtonBase-root MuiButton-root MuiButton-contained makeStyles-button-5 MuiButton-containedPrimary"
+                tabindex="0"
+                type="button"
+              >
+                <span
+                  class="MuiButton-label"
+                >
+                  追加
+                </span>
+                <span
+                  class="MuiTouchRipple-root"
+                />
+              </button>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
